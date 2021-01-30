@@ -47,6 +47,7 @@ into either: recycling, compost, landfill (, maybe e-Waste?).
 - https://fullstackgcp.com/deploy-serverless-container-google-cloud-run-68d716af7716
 - https://fullstackgcp.com/simplified-continuous-deployment-on-google-cloud-platform-bc5b0a025c4e
 ### ML Specific:
+- https://towardsdatascience.com/how-to-build-an-image-classifier-for-waste-sorting-6d11d3c9c478
 - https://towardsdatascience.com/building-a-movie-genre-classifier-using-a-dataset-created-using-google-images-4752f75a1d79
 - https://github.com/pedropro/TACO
 - https://github.com/garythung/trashnet/
