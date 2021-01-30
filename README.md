@@ -60,3 +60,4 @@ into either: recycling, compost, landfill (, maybe e-Waste?).
 ### Flutter specific
 - https://medium.com/flutter-community/working-with-apis-in-flutter-8745968103e9
 - https://firebase.flutter.dev/docs/auth/usage/
+- https://firebase.flutter.dev/docs/storage/usage/
