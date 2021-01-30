@@ -41,6 +41,7 @@ into either: recycling, compost, landfill (, maybe e-Waste?).
 ## Useful links
 - ~~https://towardsdatascience.com/10-minutes-to-deploying-a-deep-learning-model-on-google-cloud-platform-13fa56a266ee~~
 - ~~https://towardsdatascience.com/how-to-build-an-image-classifier-for-waste-sorting-6d11d3c9c478~~
+- https://dev.to/mdabrowskieu/building-rest-api-in-python-with-starlette-and-docker-10n2
 - https://medium.com/usf-msds/creating-a-web-application-powered-by-a-fastai-model-d5ee560d5207
 - https://towardsdatascience.com/building-a-movie-genre-classifier-using-a-dataset-created-using-google-images-4752f75a1d79
 - https://github.com/pedropro/TACO
