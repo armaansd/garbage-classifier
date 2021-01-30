@@ -44,10 +44,14 @@ into either: recycling, compost, landfill (, maybe e-Waste?).
 ### General Backend API (flask) Info:
 - https://medium.com/google-cloud/building-a-flask-python-crud-api-with-cloud-firestore-firebase-and-deploying-on-cloud-run-29a10c502877
 - https://medium.com/usf-msds/creating-a-web-application-powered-by-a-fastai-model-d5ee560d5207
+- https://fullstackgcp.com/deploy-serverless-container-google-cloud-run-68d716af7716
+- https://fullstackgcp.com/simplified-continuous-deployment-on-google-cloud-platform-bc5b0a025c4e
 ### ML Specific:
+- https://towardsdatascience.com/how-to-build-an-image-classifier-for-waste-sorting-6d11d3c9c478
 - https://towardsdatascience.com/building-a-movie-genre-classifier-using-a-dataset-created-using-google-images-4752f75a1d79
 - https://github.com/pedropro/TACO
 - https://github.com/garythung/trashnet/
+- https://github.com/collindching/Waste-Sorter
 - ~~https://reactnative.dev/~~
 ### Technology documentation and tutorials
 - https://flutter.dev/
@@ -57,3 +61,5 @@ into either: recycling, compost, landfill (, maybe e-Waste?).
 - https://firebase.google.com/docs/firestore/query-data/order-limit-data
 ### Flutter specific
 - https://medium.com/flutter-community/working-with-apis-in-flutter-8745968103e9
+- https://firebase.flutter.dev/docs/auth/usage/
+- https://firebase.flutter.dev/docs/storage/usage/
