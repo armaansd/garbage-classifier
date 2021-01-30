@@ -38,9 +38,11 @@ into either: recycling, compost, landfill (, maybe e-Waste?).
 - ~~GCP~~
 
 ## Useful links
-- https://towardsdatascience.com/10-minutes-to-deploying-a-deep-learning-model-on-google-cloud-platform-13fa56a266ee
-- https://towardsdatascience.com/how-to-build-an-image-classifier-for-waste-sorting-6d11d3c9c478
+- ~~https://towardsdatascience.com/10-minutes-to-deploying-a-deep-learning-model-on-google-cloud-platform-13fa56a266ee
+- ~~https://towardsdatascience.com/how-to-build-an-image-classifier-for-waste-sorting-6d11d3c9c478
+- https://medium.com/usf-msds/creating-a-web-application-powered-by-a-fastai-model-d5ee560d5207
+- https://towardsdatascience.com/building-a-movie-genre-classifier-using-a-dataset-created-using-google-images-4752f75a1d79
 - https://github.com/pedropro/TACO
 - https://github.com/garythung/trashnet/
-- https://reactnative.dev/
+- ~~https://reactnative.dev/
 - https://flutter.dev/
