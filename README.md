@@ -51,6 +51,7 @@ into either: recycling, compost, landfill (, maybe e-Waste?).
 - https://towardsdatascience.com/building-a-movie-genre-classifier-using-a-dataset-created-using-google-images-4752f75a1d79
 - https://github.com/pedropro/TACO
 - https://github.com/garythung/trashnet/
+- https://github.com/collindching/Waste-Sorter
 - ~~https://reactnative.dev/~~
 ### Technology documentation and tutorials
 - https://flutter.dev/
