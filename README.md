@@ -2,7 +2,7 @@
 
 
 ## Basic Features:
-Create a mobile application using React Native (or Flutter etc. some kind of mobile framework), GCP backend, and fastai image classification model to detect and classify garbage from user taken photos
+Create a mobile application using React Native (or Flutter etc. some kind of mobile framework), Firebase backend, and fastai image classification model to detect and classify garbage from user taken photos
 into either: recycling, compost, landfill (, maybe e-Waste?).
 
 
