@@ -60,16 +60,18 @@ def get_leaderboard():
         return jsonify(all_users), 200
     except Exception as e:
         return f"Exception occured at: {e}"
-
 @app.route('/camera',methods=['POST'])
 def predict():
     # not the actual code need to figure out how to serve the image
     # that was taken and put into firebase/cloud storage?
     # into flask
-    return jsonify(predict_single(request.files['image'])
-        
-    
+    return jsonify(predict_single(request.files['image']))
 
 port = int(os.environ.get('PORT', 8080))
 if __name__ == '__main__':
     app.run(threaded=True, host='0.0.0.0', port=port)
+                   
+
+
+
+        
