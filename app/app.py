@@ -12,9 +12,9 @@ scores_ref = db.collection('scores')
 # I think we should just import the fastai pkl file here and do it within the method.
 # we can always get the image that we want to predict on from Firebase cloud storage
 
-learn = load_learner(path='./models', file='garb_trained.pkl')
+#learn = load_learner(path='./models', file='garb_trained.pkl')
 
-classes = learn.data.classes
+#classes = learn.data.classes
 
 
 def predict_single(img_file):
@@ -70,6 +70,6 @@ def predict():
         
     
 
-#port = int(os.environ.get('PORT', 8080))
-#if __name__ == '__main__':
-#    app.run(threaded=True, host='0.0.0.0', port=port)
+port = int(os.environ.get('PORT', 8080))
+if __name__ == '__main__':
+    app.run(threaded=True, host='0.0.0.0', port=port)
