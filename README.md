@@ -2,7 +2,7 @@
 
 
 ## Basic Features:
-Create a mobile application using React Native (or Flutter etc. some kind of mobile framework), GCP backend, and fastai image classification model to detect and classify garbage from user taken photos
+Create a mobile application using React Native (or Flutter etc. some kind of mobile framework), Firebase backend, and fastai image classification model to detect and classify garbage from user taken photos
 into either: recycling, compost, landfill (, maybe e-Waste?).
 
 
@@ -27,19 +27,31 @@ into either: recycling, compost, landfill (, maybe e-Waste?).
 - Javascript
 - Python
 - Java
+- Dart
 
 ### Technologies
 - fastai
 - pytorch
-- React Native
+- Flask
+- ~~React Native~~
 - Flutter
 - Starlette
-- GCP
+- ~~GCP~~
 
 ## Useful links
-- https://towardsdatascience.com/10-minutes-to-deploying-a-deep-learning-model-on-google-cloud-platform-13fa56a266ee
-- https://towardsdatascience.com/how-to-build-an-image-classifier-for-waste-sorting-6d11d3c9c478
+- ~~https://towardsdatascience.com/10-minutes-to-deploying-a-deep-learning-model-on-google-cloud-platform-13fa56a266ee~~
+- ~~https://towardsdatascience.com/how-to-build-an-image-classifier-for-waste-sorting-6d11d3c9c478~~
+### General Backend API (flask) Info:
+- https://medium.com/google-cloud/building-a-flask-python-crud-api-with-cloud-firestore-firebase-and-deploying-on-cloud-run-29a10c502877
+- https://medium.com/usf-msds/creating-a-web-application-powered-by-a-fastai-model-d5ee560d5207
+### ML Specific:
+- https://towardsdatascience.com/building-a-movie-genre-classifier-using-a-dataset-created-using-google-images-4752f75a1d79
 - https://github.com/pedropro/TACO
 - https://github.com/garythung/trashnet/
-- https://reactnative.dev/
+- ~~https://reactnative.dev/~~
+### Technology documentation and tutorials
 - https://flutter.dev/
+- https://firebase.flutter.dev/docs/firestore/usage/
+- https://cloud.google.com/endpoints/docs/frameworks/python/test-deploy
+- https://medium.com/codeduck/cloud-run-vs-app-engine-dc1871abedca
+- https://firebase.google.com/docs/firestore/query-data/order-limit-data
