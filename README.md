@@ -2,7 +2,7 @@
 
 
 ## Basic Features:
-Create a mobile application using React Native, GCP backend, and fastai image classification model to detect and classify garbage from user taken photos
+Create a mobile application using React Native (or Flutter etc. some kind of mobile framework), GCP backend, and fastai image classification model to detect and classify garbage from user taken photos
 into either: recycling, compost, landfill (, maybe e-Waste?).
 
 
@@ -33,6 +33,8 @@ into either: recycling, compost, landfill (, maybe e-Waste?).
 - pytorch
 - React Native
 - Flutter
+- Starlette
+- GCP
 
 ## Useful links
 - https://towardsdatascience.com/10-minutes-to-deploying-a-deep-learning-model-on-google-cloud-platform-13fa56a266ee
