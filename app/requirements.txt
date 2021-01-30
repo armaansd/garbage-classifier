@@ -1,2 +1,4 @@
+fastai
+torch
 flask
 firebase_admin
