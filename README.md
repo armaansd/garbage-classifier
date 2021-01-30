@@ -55,3 +55,5 @@ into either: recycling, compost, landfill (, maybe e-Waste?).
 - https://cloud.google.com/endpoints/docs/frameworks/python/test-deploy
 - https://medium.com/codeduck/cloud-run-vs-app-engine-dc1871abedca
 - https://firebase.google.com/docs/firestore/query-data/order-limit-data
+### Flutter specific
+- https://medium.com/flutter-community/working-with-apis-in-flutter-8745968103e9
