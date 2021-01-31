@@ -1,4 +1,3 @@
-#Garbify
 
 [![Garbify Demo](http://img.youtube.com/vi/KQOZPOx3Blc/0.jpg)](http://www.youtube.com/watch?v=KQOZPOx3Blc "Garbify")
 
