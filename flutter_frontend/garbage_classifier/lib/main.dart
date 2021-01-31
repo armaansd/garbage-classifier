@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:image_picker/image_picker.dart';
 import 'leaderBoardPage.dart';
+import 'package:http/http.dart' as http;
 
 
+
+
+
+//https://quickstart-image-rvoiadg33q-uc.a.run.app/leaderboard
 void main() {
   //WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
@@ -98,26 +103,6 @@ class MyHome extends StatelessWidget{
                       elevation: 5,
                 ),
 
-//                  onPressed: (),{},
-//                  child: const Text(
-//                      'Bottom Button!', style: TextStyle(fontSize: 20)
-//                  ),
-//                  color: Colors.blue,
-//                  textColor: Colors.white,
-//                  elevation: 5,
-
-
-//                  child: const Text('Leaderboard Dashboard', style: TextStyle(fontSize: 20)  ),
-//                  color: Colors.blue,
-//                  textColor: Colors.white,
-//                  elevation: 5,
-//                );
-//                Text( "Leaderboard Dashboard" ),
-
-//                  margin: EdgeInsets.only(top:10),
-//                  child: Center(
-//                    child: Text('5000',textAlign:TextAlign.center,),
-//                  )
               ),
 
 
