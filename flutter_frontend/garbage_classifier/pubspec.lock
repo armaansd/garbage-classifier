@@ -64,6 +64,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+<<<<<<< HEAD
   firebase_core:
     dependency: "direct main"
     description:
@@ -85,6 +86,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.1+3"
+=======
+  fake_async:
+    dependency: transitive
+    description:
+      name: fake_async
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.0-nullsafety.1"
+>>>>>>> 5cc01191092bda8fa84e40fb03d6c3e0dba5e41a
   flutter:
     dependency: "direct main"
     description: flutter
@@ -95,6 +105,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+<<<<<<< HEAD
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -107,6 +118,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.12"
+=======
+>>>>>>> 5cc01191092bda8fa84e40fb03d6c3e0dba5e41a
   image_picker:
     dependency: "direct main"
     description:
@@ -114,13 +127,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.12+1"
-  js:
-    dependency: transitive
-    description:
-      name: js
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.6.2"
   matcher:
     dependency: transitive
     description:
@@ -149,6 +155,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.1"
+<<<<<<< HEAD
   petitparser:
     dependency: transitive
     description:
@@ -170,6 +177,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.3"
+=======
+>>>>>>> 5cc01191092bda8fa84e40fb03d6c3e0dba5e41a
   sky_engine:
     dependency: transitive
     description: flutter
@@ -239,5 +248,10 @@ packages:
     source: hosted
     version: "3.6.1"
 sdks:
+<<<<<<< HEAD
   dart: ">=2.7.0 <3.0.0"
   flutter: ">=1.12.13+hotfix.5 <2.0.0"
+=======
+  dart: ">=2.10.0-110 <2.11.0"
+  flutter: ">=0.1.4 <2.0.0"
+>>>>>>> 5cc01191092bda8fa84e40fb03d6c3e0dba5e41a
