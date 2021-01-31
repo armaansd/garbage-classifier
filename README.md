@@ -49,11 +49,11 @@ https://quickstart-image-rvoiadg33q-uc.a.run.app
 - https://fullstackgcp.com/simplified-continuous-deployment-on-google-cloud-platform-bc5b0a025c4e
 ### ML Specific:
 - https://towardsdatascience.com/how-to-build-an-image-classifier-for-waste-sorting-6d11d3c9c478
+- https://towardsdatascience.com/how-to-train-an-image-classifier-in-pytorch-and-use-it-to-perform-basic-inference-on-single-images-99465a1e9bf5
 - https://towardsdatascience.com/building-a-movie-genre-classifier-using-a-dataset-created-using-google-images-4752f75a1d79
 - https://github.com/pedropro/TACO
 - https://github.com/garythung/trashnet/
 - https://github.com/collindching/Waste-Sorter
-- ~~https://reactnative.dev/~~
 ### Technology documentation and tutorials
 - https://flutter.dev/
 - https://firebase.flutter.dev/docs/firestore/usage/
