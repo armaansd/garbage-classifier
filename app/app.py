@@ -60,7 +60,6 @@ def get_leaderboard():
         return jsonify(all_users), 200
     except Exception as e:
         return f"Exception occured at: {e}"
-'''
 @app.route('/camera',methods=['POST'])
 def predict():
     # not the actual code need to figure out how to serve the image

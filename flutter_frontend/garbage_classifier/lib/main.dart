@@ -1,134 +1,49 @@
-import 'dart:async';
-import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'auth.dart';
+import 'home.dart';
+import 'reg.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-//import 'package:firebase_core/firebase_core.dart';
-import 'package:image_picker/image_picker.dart';
-import 'leaderBoardPage.dart';
+import 'package:provider/provider.dart';
 
-
-void main() {
-  //WidgetsFlutterBinding.ensureInitialized();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
-//class MyApp extends StatefulWidget{
-//  @override
-//  State<StatefulWidget> createState() =>  _MyAppState ();
-//
-//}
-
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return MaterialApp(
-        home: MyHome()
+    return MultiProvider(
+      providers: [
+        Provider<AuthenticationService>(
+          create: (_) => AuthenticationService(FirebaseAuth.instance),
+        ),
+        StreamProvider(
+          create: (context) => context.read<AuthenticationService>().authStateChanges,
+        )
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: AuthenticationWrapper(),
+      ),
     );
   }
-
 }
 
-
-//class _MyAppState extends State<MyApp> {
-class MyHome extends StatelessWidget{
-
+class AuthenticationWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Show error message if initialization failed
-    /*
-    if(_error) {
-      return MaterialApp(
-        home: Scaffold(
-          body: Text("Firebase failed to load.")
-        )
-      );
+    final firebaseUser = context.watch<User>();
+
+    if (firebaseUser != null) {
+      return Home();
     }
-    // Show a loader until FlutterFire is initialized
-    if (!_initialized) {
-      return MaterialApp(
-          home: Scaffold(
-              body: Text("Loading... Please be patient :)")
-          )
-      );
-    }
-     */
-    return MaterialApp(theme:
-    ThemeData(brightness: Brightness.dark,
-        primaryColor:Colors.blueGrey),
-      home: Scaffold(
-        appBar:  AppBar(title: Text('Garbify', textAlign: TextAlign.center,),
-        ),
-        body: Column(
-            children: <Widget> [Container(
-                margin:  EdgeInsets.only(top:50),
-                child: Center(
-                    child: Image(image: AssetImage('test_imgs/profile.png'))
-                )
-            ),
-              Container(
-                  margin: EdgeInsets.only(top:10),
-                  child: Center(
-                    child: Text('chrisye1',textAlign:TextAlign.center,),
-                  )
-              ),
-
-              Container(
-                  margin: EdgeInsets.only(top:10),
-                  child: Center(
-                    child: Text('5000',textAlign:TextAlign.center,),
-                  )
-              ),
-
-              // button
-              Container(
-
-                alignment: Alignment.bottomLeft,
-                child: RaisedButton(
-//
-                      onPressed: () {
-
-                                      Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context)=>leaderBoardPage() )
-                                                  );
-                                          },
-                      child: const Text('Leaderboard Dashboard!', style: TextStyle(fontSize: 20) ),
-                      color: Colors.blue,
-                      textColor: Colors.white,
-                      elevation: 5,
-                ),
-
-//                  onPressed: (),{},
-//                  child: const Text(
-//                      'Bottom Button!', style: TextStyle(fontSize: 20)
-//                  ),
-//                  color: Colors.blue,
-//                  textColor: Colors.white,
-//                  elevation: 5,
-
-
-//                  child: const Text('Leaderboard Dashboard', style: TextStyle(fontSize: 20)  ),
-//                  color: Colors.blue,
-//                  textColor: Colors.white,
-//                  elevation: 5,
-//                );
-//                Text( "Leaderboard Dashboard" ),
-
-//                  margin: EdgeInsets.only(top:10),
-//                  child: Center(
-//                    child: Text('5000',textAlign:TextAlign.center,),
-//                  )
-              ),
-
-
-
-            ]
-
-        ),
-
-        //floatingActionButton: new FloatingActionButton(onPressed: getImage,tooltip: 'Pick Image',child: new Icon(Icons.camera) ,),
-        floatingActionButton: new FloatingActionButton(tooltip: 'Pick Image',child: new Icon(Icons.camera) ,),
-      ),);
+    return RegPage();
   }
-
 }
