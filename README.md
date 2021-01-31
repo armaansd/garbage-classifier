@@ -1,5 +1,5 @@
 
-[![Garbify Demo](https://i.imgur.com/myznJSp.png)](http://www.youtube.com/watch?v=KQOZPOx3Blc "Garbify")
+[![Garbify Demo](https://i.imgur.com/dUSnc1Z.png)](http://www.youtube.com/watch?v=KQOZPOx3Blc "Garbify")
 
 
 
