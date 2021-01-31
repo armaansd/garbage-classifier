@@ -1,13 +1,11 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:image_picker/image_picker.dart';
 import 'leaderBoardPage.dart';
 import 'package:http/http.dart' as http;
-
-
-
 
 
 //https://quickstart-image-rvoiadg33q-uc.a.run.app/leaderboard
@@ -15,12 +13,6 @@ void main() {
   //WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
-
-//class MyApp extends StatefulWidget{
-//  @override
-//  State<StatefulWidget> createState() =>  _MyAppState ();
-//
-//}
 
 class MyApp extends StatelessWidget{
   @override
@@ -30,33 +22,12 @@ class MyApp extends StatelessWidget{
         home: MyHome()
     );
   }
-
 }
-
 
 //class _MyAppState extends State<MyApp> {
 class MyHome extends StatelessWidget{
-
   @override
   Widget build(BuildContext context) {
-    // Show error message if initialization failed
-    /*
-    if(_error) {
-      return MaterialApp(
-        home: Scaffold(
-          body: Text("Firebase failed to load.")
-        )
-      );
-    }
-    // Show a loader until FlutterFire is initialized
-    if (!_initialized) {
-      return MaterialApp(
-          home: Scaffold(
-              body: Text("Loading... Please be patient :)")
-          )
-      );
-    }
-     */
     return MaterialApp(theme:
     ThemeData(brightness: Brightness.dark,
         primaryColor:Colors.blueGrey),
@@ -76,22 +47,17 @@ class MyHome extends StatelessWidget{
                     child: Text('chrisye1',textAlign:TextAlign.center,),
                   )
               ),
-
               Container(
                   margin: EdgeInsets.only(top:10),
                   child: Center(
                     child: Text('5000',textAlign:TextAlign.center,),
                   )
               ),
-
               // button
               Container(
-
                 alignment: Alignment.bottomLeft,
                 child: RaisedButton(
-//
                       onPressed: () {
-
                                       Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                       builder: (context)=>leaderBoardPage() )
@@ -102,18 +68,11 @@ class MyHome extends StatelessWidget{
                       textColor: Colors.white,
                       elevation: 5,
                 ),
-
               ),
-
-
-
             ]
-
         ),
 
-        //floatingActionButton: new FloatingActionButton(onPressed: getImage,tooltip: 'Pick Image',child: new Icon(Icons.camera) ,),
         floatingActionButton: new FloatingActionButton(tooltip: 'Pick Image',child: new Icon(Icons.camera) ,),
       ),);
   }
-
 }
