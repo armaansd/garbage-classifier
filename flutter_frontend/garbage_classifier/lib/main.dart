@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:image_picker/image_picker.dart';
+import 'leaderBoardPage.dart';
 
 
 void main() {
@@ -10,42 +11,27 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget{
+//class MyApp extends StatefulWidget{
+//  @override
+//  State<StatefulWidget> createState() =>  _MyAppState ();
+//
+//}
+
+class MyApp extends StatelessWidget{
   @override
-  State<StatefulWidget> createState() =>  _MyAppState ();
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return MaterialApp(
+        home: MyHome()
+    );
+  }
 
 }
 
-class _MyAppState extends State<MyApp> {
-  // Set default `_initialized` and `_error` state to false
-  /*
-  bool _initialized = false;
-  bool _error = false;
 
-  // Define an async function to initialize FlutterFire
+//class _MyAppState extends State<MyApp> {
+class MyHome extends StatelessWidget{
 
-  void initializeFlutterFire() async {
-    try {
-      // Wait for Firebase to initialize and set `_initialized` state to true
-      await Firebase.initializeApp();
-      setState(() {
-        _initialized = true;
-      });
-    } catch(e) {
-      // Set `_error` state to true if Firebase initialization fails
-      setState(() {
-        _error = true;
-      });
-    }
-  }
-
-  @override
-  void initState() {
-    initializeFlutterFire();
-    super.initState();
-  }
-
-   */
   @override
   Widget build(BuildContext context) {
     // Show error message if initialization failed
@@ -57,7 +43,6 @@ class _MyAppState extends State<MyApp> {
         )
       );
     }
-
     // Show a loader until FlutterFire is initialized
     if (!_initialized) {
       return MaterialApp(
@@ -66,40 +51,84 @@ class _MyAppState extends State<MyApp> {
           )
       );
     }
-
      */
     return MaterialApp(theme:
-        ThemeData(brightness: Brightness.dark,
-                  primaryColor:Colors.blueGrey),
+    ThemeData(brightness: Brightness.dark,
+        primaryColor:Colors.blueGrey),
       home: Scaffold(
         appBar:  AppBar(title: Text('Garbify', textAlign: TextAlign.center,),
-    ),
-    body: Column(
-      children: <Widget> [Container(
-        margin:  EdgeInsets.only(top:50),
-        child: Center(
-          child: Image(image: AssetImage('test_imgs/profile.png'))
-        )
-      ),
-      Container(
-        margin: EdgeInsets.only(top:10),
-        child: Center(
-          child: Text('chrisye1',textAlign:TextAlign.center,),
-        )
-      ),
-        Container(
-            margin: EdgeInsets.only(top:10),
-            child: Center(
-              child: Text('5000',textAlign:TextAlign.center,),
-            )
         ),
-      ]
+        body: Column(
+            children: <Widget> [Container(
+                margin:  EdgeInsets.only(top:50),
+                child: Center(
+                    child: Image(image: AssetImage('test_imgs/profile.png'))
+                )
+            ),
+              Container(
+                  margin: EdgeInsets.only(top:10),
+                  child: Center(
+                    child: Text('chrisye1',textAlign:TextAlign.center,),
+                  )
+              ),
 
-    ),
+              Container(
+                  margin: EdgeInsets.only(top:10),
+                  child: Center(
+                    child: Text('5000',textAlign:TextAlign.center,),
+                  )
+              ),
 
-    //floatingActionButton: new FloatingActionButton(onPressed: getImage,tooltip: 'Pick Image',child: new Icon(Icons.camera) ,),
+              // button
+              Container(
+
+                alignment: Alignment.bottomLeft,
+                child: RaisedButton(
+//
+                      onPressed: () {
+
+                                      Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context)=>leaderBoardPage() )
+                                                  );
+                                          },
+                      child: const Text('Leaderboard Dashboard!', style: TextStyle(fontSize: 20) ),
+                      color: Colors.blue,
+                      textColor: Colors.white,
+                      elevation: 5,
+                ),
+
+//                  onPressed: (),{},
+//                  child: const Text(
+//                      'Bottom Button!', style: TextStyle(fontSize: 20)
+//                  ),
+//                  color: Colors.blue,
+//                  textColor: Colors.white,
+//                  elevation: 5,
+
+
+//                  child: const Text('Leaderboard Dashboard', style: TextStyle(fontSize: 20)  ),
+//                  color: Colors.blue,
+//                  textColor: Colors.white,
+//                  elevation: 5,
+//                );
+//                Text( "Leaderboard Dashboard" ),
+
+//                  margin: EdgeInsets.only(top:10),
+//                  child: Center(
+//                    child: Text('5000',textAlign:TextAlign.center,),
+//                  )
+              ),
+
+
+
+            ]
+
+        ),
+
+        //floatingActionButton: new FloatingActionButton(onPressed: getImage,tooltip: 'Pick Image',child: new Icon(Icons.camera) ,),
         floatingActionButton: new FloatingActionButton(tooltip: 'Pick Image',child: new Icon(Icons.camera) ,),
-  ),);
+      ),);
   }
 
 }
