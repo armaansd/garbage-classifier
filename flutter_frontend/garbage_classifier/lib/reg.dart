@@ -13,7 +13,7 @@ class RegPage extends StatelessWidget {
       ),
       body: Column(
           children: <Widget> [Container(
-              margin:  EdgeInsets.only(top:50),
+              margin:  EdgeInsets.only(top:20),
               child: TextField(
               controller: emailController,
               decoration: InputDecoration(
@@ -22,7 +22,7 @@ class RegPage extends StatelessWidget {
             )
       ),
         Container(
-          margin: EdgeInsets.only(top:50),
+          margin: EdgeInsets.only(top:20),
           child: TextField(
                 controller: passwordController,
                 decoration: InputDecoration(
@@ -31,7 +31,7 @@ class RegPage extends StatelessWidget {
               )
           ),
     Container(
-      margin:EdgeInsets.only(top:50),
+      margin:EdgeInsets.only(top:20),
       child: RaisedButton(
         onPressed: () {
           context.read<AuthenticationService>().signIn(
@@ -43,7 +43,7 @@ class RegPage extends StatelessWidget {
       )
     ),
             Container(
-              margin: EdgeInsets.only(top:50),
+              margin: EdgeInsets.only(top:20),
               child:           RaisedButton(
                 onPressed: () {
                   context.read<AuthenticationService>().signUp(

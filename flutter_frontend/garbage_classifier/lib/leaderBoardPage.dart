@@ -1,59 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import './models/user.dart';
 
 
 //import 'package:http/http.dart' as http;
-
-class user {
-  String name;
-  int score;
-
-  user({ this.name, this.score });
-
-  factory user.fromJson( Map<String,dynamic>  json) {
-    return user(
-          name:json['uid'],
-          score:json['score'],
-      );
-  }
+class leaderBoardPage extends StatefulWidget {
+  @override
+  _leaderBoardPage createState() =>  _leaderBoardPage();
 }
 
-class leaderBoardPage extends StatelessWidget{
+class _leaderBoardPage extends State<leaderBoardPage> {
+  List<user> _users = List<user>();
+  Future<List<user>> fetchUsers() async {
+    var  web = "https://quickstart-image-rvoiadg33q-uc.a.run.app/leaderboard";
+    var response = await http.get(web);
+    var users = List<user>();
 
-  static String  web = "https://quickstart-image-rvoiadg33q-uc.a.run.app/leaderboard";
-
-//  static Future<http.Response> fetchAlbum() {
-//    return http.get(web);
-//  }
-
-  Future<user> fetchAlbum() async {
-    final response = await http.get(web);
-
-    if(response.statusCode==200){
-
-      print("This is working");
-
-      return user.fromJson(jsonDecode(response.body) );
-
+    if (response.statusCode==200){
+      var usersJson = json.decode(response.body);
+      for (var userJson in usersJson){
+        users.add(user.fromJson(userJson));
+      }
     }
-    else {
-      throw Exception ('Failed to load user data');
-    }
+    return users;
   }
 
-
-
-
-  final List<String> entries =
+ // final List<String> entries =
 //  fetchAlbum() as List<String> ;
 
-  <String>['A', 'B', 'C'];
+//  <String>['A', 'B', 'C'];
   final List<int> colorCodes = <int>[600, 500, 100];
 //  var arr =
 //  var users = new List();
-
   @override
+  void initState(){
+    fetchUsers().then((value){
+      setState(() {
+        _users.addAll(value);
+        _users.sort((a,b){
+          return a.compareTo(b);
+        });
+      });
+    });
+    print(_users);
+    super.initState();
+  }
+  @override
+
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
@@ -64,13 +58,13 @@ class leaderBoardPage extends StatelessWidget{
 
         child: ListView.separated(
           padding: const EdgeInsets.all(8),
-          itemCount: entries.length,
+          itemCount: _users.length,
           itemBuilder: (BuildContext context, int index) {
             return Container(
               height: 50,
               color: Colors.amber[colorCodes[0]],
               child: Center(child: Text(
-                  'Name ${entries[index]}' + '\nScore ' + '${colorCodes[index]}'
+                  '${_users[index].name}' + '\n' + '${_users[index].score}'
               ) ),
 //              child: Center(child: Text('Entry ${colorCodes[index]}')),
             );
