@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request, jsonify
-from fastai.basic_train import load_learner
-from fastai.vision import open_image
+#from fastai.basic_train import load_learner
+#from fastai.vision import open_image
 from firebase_admin import credentials, firestore, initialize_app
 
 app = Flask(__name__)
@@ -16,7 +16,7 @@ scores_ref = db.collection('scores')
 
 #classes = learn.data.classes
 
-
+'''
 def predict_single(img_file):
     prediction = learn.predict(open_image(img_file))
     probs_list = prediction[2].numpy()
@@ -24,7 +24,7 @@ def predict_single(img_file):
         'category': classes[prediction[1].item()],
         'probs': {c: round(float(probs_list[i]), 5) for (i, c) in enumerate(classes)}
     }
-
+'''
 ### modify the code above to fit only result 2 options TRASH or RECYCLE
 
 @app.route('/home',methods=["POST"])
@@ -47,7 +47,7 @@ def update_user_score():
 @app.route('/home',methods=["GET"])
 def get_user_score():
     try:
-        uid = request.json['id']
+        uid = request.args.get('id')
         user_prof = scores_ref.document(uid).get()
         return jsonify(user_prof.to_dict()), 200
     except Exception as e:
@@ -60,13 +60,14 @@ def get_leaderboard():
         return jsonify(all_users), 200
     except Exception as e:
         return f"Exception occured at: {e}"
+'''
 @app.route('/camera',methods=['POST'])
 def predict():
     # not the actual code need to figure out how to serve the image
     # that was taken and put into firebase/cloud storage?
     # into flask
     return jsonify(predict_single(request.files['image']))
-
+'''
 port = int(os.environ.get('PORT', 8080))
 if __name__ == '__main__':
     app.run(threaded=True, host='0.0.0.0', port=port)
