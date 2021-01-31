@@ -40,6 +40,7 @@ dependencies:
   # Updated to work with new core only plugins (no new changes):
   camera: '^0.7.0+1'
   image: '^2.1.19'
+  dio: '^3.0.10'
   #firebase_admob: "^0.11.0+1"
   #firebase_analytics: "^7.0.1"
   #firebase_database: "^6.0.0"

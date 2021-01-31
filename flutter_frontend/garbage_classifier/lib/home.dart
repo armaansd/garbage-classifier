@@ -2,14 +2,17 @@ import 'dart:async';
 import 'dart:io';
 import 'auth.dart';
 import 'dart:convert';
+import './models/package.dart';
 import './models/user.dart';
 //import 'package:image/image.dart' as img_2;
 import 'package:flutter/material.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'leaderBoardPage.dart';
+
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
@@ -115,10 +118,10 @@ class MyHome extends State<Home>{
   Future<File> getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera,maxHeight: 480, maxWidth: 640);
     setState(() {
-      _image = image;
+      packing p = packing(_name,image,_score);
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Choices( image: _image)),
+        MaterialPageRoute(builder: (context) => Choice(p)),
       );
     });
   }
@@ -144,29 +147,129 @@ class MyHome extends State<Home>{
     }
   }
 }
+class Choice extends StatefulWidget {
 
-class Choices extends StatelessWidget{
-  final File image;
+  final packing p;
+  const Choice(this.p);
+ // Choice({Key key, @required this.p}) : super(key: key);
+  @override
+  Choices createState() =>  Choices(p);
+}
 
-  Choices({Key key, @required this.image}) : super(key: key);
+class Choices extends State<Choice>{
+  final packing p;
+  int score;
+  String id;
+  File image;
+  int descision;
+  Choices(this.p);
+  //Choices({Key key, @required this.image}) : super(key: key);
+  Future<void> getScore() async{
+    id = p.id;
+    score = p.score;
+    image = p.image;
+
+  }
+  Future<void> postScore() async{
+    var url = 'https://quickstart-image-rvoiadg33q-uc.a.run.app/home';
+    var body = json.encode({"id": id, "score": score});
+
+    Map<String,String> headers = {
+      'Content-type' : 'application/json',
+      'Accept': 'application/json',
+    };
+    var resp = await http.put(url,body: body, headers: headers);
+    if (resp.statusCode==200){
+      print("nice");
+    }
+
+
+  }
+  Future<void> getDesc() async{
+    var  web = "https://quickstart-image-rvoiadg33q-uc.a.run.app/";
+    // To parse this JSON data, do
+    //
+    //var ud = new Adduser(email,0);
+    //final sendJson = UsertoJson(ud);
+    var request = new http.MultipartRequest("POST", Uri.http(web,'/home'));
+    request.files.add(http.MultipartFile.fromBytes('file',await image.readAsBytes(), contentType: MediaType('image', 'jpeg')));
+    var strresponse = await request.send();
+    int _pred = 0;
+    var response = await http.Response.fromStream(strresponse);
+      if (response.statusCode == 200) {print("Uploaded!");
+      var r = json.decode(response.body);
+       descision =  _pred = r['pred'];
+      }
+    }
+
+
+  bool logic1(descision){
+    if (descision == 0){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  bool logic2(descision1){
+    if (descision1 == 1){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  @override
+  void initState(){
+    getScore();
+    getDesc();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-
     // TODO: implement build
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {Navigator.of(context).pop(); },
+    );
+
+
+    AlertDialog alert = AlertDialog(
+      title: Text("Correct!"),
+      content: Text(""),
+      actions: [
+        okButton,
+      ],
+    );
+    AlertDialog alert2 = AlertDialog(
+      title: Text("Incorrect!"),
+      content: Text(""),
+      actions: [
+        okButton,
+      ],
+    );
     return Scaffold(
         appBar:  AppBar(title: Text('Prediction time!', textAlign: TextAlign.center,),
         ),
         body: Column(
-            children: <Widget> [Container(
-                margin:  EdgeInsets.only(top:20),
-                child: Center(
-                    child: Text("PLACEHOLDER")//Image.file(image)
-                )
-            ),
+            children: <Widget> [
               Container(
         margin:  EdgeInsets.only(top:20),
         child: RaisedButton(
-        onPressed: () {Navigator.pop(context);}, //For now go back to home
+        onPressed: () {
+          bool gets = logic1(descision);
+          if (gets){
+            score += 500;
+            postScore();
+            return alert;
+          }
+          else{
+            score -= 500;
+            postScore();
+            return alert2;
+          }
+        }, //For now go back to home
           child:
           Text("RECYCLING", textAlign: TextAlign.center,),
         )
@@ -174,14 +277,30 @@ class Choices extends StatelessWidget{
     Container(
     margin: EdgeInsets.only(top:20),
     child: RaisedButton(
-      onPressed: () {Navigator.pop(context);}, //For now go back to home
+      onPressed: () {
+        bool getss = logic2(descision);
+        if (getss){
+          score += 500;
+          postScore();
+          return alert;
+        }
+        else{
+          score -= 500;
+          postScore();
+          return alert2;
+        }
+      }, //For now go back to home
       child:
       Text("TRASH", textAlign: TextAlign.center,),
     )
     ),
     Container(
-    margin:EdgeInsets.only(top:50),
-    child: TextField()
+        margin:  EdgeInsets.only(top:20),
+        child: RaisedButton(
+          onPressed: () {Navigator.pop(context);}, //For now go back to home
+          child:
+          Text("HOME", textAlign: TextAlign.center,),
+        )
     )]
     ));
   }

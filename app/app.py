@@ -2,7 +2,25 @@ import os
 from flask import Flask, request, jsonify
 #from fastai.basic_train import load_learner
 #from fastai.vision import open_image
-from firebase_admin import credentials, firestore, initialize_app
+import matplotlib.pyplot as plt
+import numpy as np
+import torch
+from torch import nn
+from torch import optim
+import torch.nn.functional as F
+from torchvision import datasets, transforms, models
+
+import zipfile as zf
+files = zf.ZipFile("dataset.zip",'r')
+files.extractall()
+files.close()
+
+data_dir = 'dataset'
+test_transforms = transforms.Compose([transforms.Resize(224), transforms.ToTensor(), ])
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model=torch.load('model.pth')
+model.eval()
 
 app = Flask(__name__)
 cred = credentials.Certificate('garbify_key.json')
@@ -12,17 +30,29 @@ scores_ref = db.collection('scores')
 # I think we should just import the fastai pkl file here and do it within the method.
 # we can always get the image that we want to predict on from Firebase cloud storage
 
-#learn = load_learner(path='./models', file='garb_trained.pkl')
+learn = load_learner(path='./models', file='model.pth')
 
-#classes = learn.data.classes
+classes = learn.data.classes
 
+
+
+def predict_image(image):
+    image_tensor = test_transforms(image).float()
+    image_tensor = image_tensor.unsqueeze_(0)
+    # input = Variable(image_tensor)
+    input = image_tensor
+    input = input.to(device)
+    output = model(input)
+    index = output.data.cpu().numpy().argmax()
+    print(output.data.cpu().numpy())
+    return {'pred': index}
 '''
 def predict_single(img_file):
     prediction = learn.predict(open_image(img_file))
     probs_list = prediction[2].numpy()
     return {
-        'category': classes[prediction[1].item()],
-        'probs': {c: round(float(probs_list[i]), 5) for (i, c) in enumerate(classes)}
+        'category': classes[prediction[1].item()]
+       }
     }
 '''
 ### modify the code above to fit only result 2 options TRASH or RECYCLE
@@ -60,13 +90,15 @@ def get_leaderboard():
         return jsonify(all_users), 200
     except Exception as e:
         return f"Exception occured at: {e}"
+
 @app.route('/camera',methods=['POST'])
 def predict():
     # not the actual code need to figure out how to serve the image
     # that was taken and put into firebase/cloud storage?
     # into flask
-    return jsonify(predict_single(request.files['image']))
-'''
+
+    return jsonify(predict_image(request.files['image']))
+
 port = int(os.environ.get('PORT', 8080))
 if __name__ == '__main__':
     app.run(threaded=True, host='0.0.0.0', port=port)
