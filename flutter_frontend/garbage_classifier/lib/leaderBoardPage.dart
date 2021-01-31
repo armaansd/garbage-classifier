@@ -12,7 +12,6 @@ class user {
   user({ this.name, this.score });
 
   factory user.fromJson( Map<String,dynamic>  json) {
-
     return user(
           name:json['uid'],
           score:json['score'],
@@ -33,7 +32,7 @@ class leaderBoardPage extends StatelessWidget{
 
     if(response.statusCode==200){
 
-      print("This is worrking");
+      print("This is working");
 
       return user.fromJson(jsonDecode(response.body) );
 

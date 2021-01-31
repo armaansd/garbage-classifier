@@ -38,14 +38,14 @@ dependencies:
   #firebase_messaging: "^8.0.0-dev.14"
   #firebase_remote_config: "^0.8.0-dev.0"
   # Updated to work with new core only plugins (no new changes):
-
+  camera: '^0.7.0+1'
   #firebase_admob: "^0.11.0+1"
   #firebase_analytics: "^7.0.1"
   #firebase_database: "^6.0.0"
-  #firebase_dynamic_links: "^0.7.0+1"
+  #firebase_dynamic_links: "^0.7.0+1" 
   #firebase_in_app_messaging: "^0.3.0+1"
   #firebase_performance: "^0.5.0+1"
-
+  provider: '^4.3.3'
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
