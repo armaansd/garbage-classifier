@@ -4,7 +4,8 @@
 ## Basic Features:
 Create a mobile application using React Native (or Flutter etc. some kind of mobile framework), Firebase backend, and fastai image classification model to detect and classify garbage from user taken photos
 into either: recycling, compost, landfill (, maybe e-Waste?).
-
+**API Endpoint** 
+https://quickstart-image-rvoiadg33q-uc.a.run.app
 
 **Feature priority levels in order of importance 
 1 is most important 4 is least important**
