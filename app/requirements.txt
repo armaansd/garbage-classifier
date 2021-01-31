@@ -1,4 +1,7 @@
-fastai
 torch
+torchvision
+numpy
+zipfile
+matplotlib
 flask
 firebase_admin
